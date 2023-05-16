@@ -1,0 +1,47 @@
+
+<div style="width: 100%;background-color: #3498DB;color: #f1f1f1;text-align: left; padding: 20px;font-size: 10pt;font-weight: 500;">
+    <span style="padding: 5px!important;text-transform: capitalize;color: #ffffff;font-size: 10pt; font-weight: 600;">
+    {{ trans('modules.report.graph_evaluators')}}
+    </span>
+  </div>
+  
+  <div class="grafico">
+      <div class="eixo-y">
+          <div class="nivel">10-</div>
+          <div class="nivel">9-</div>
+          <div class="nivel">8-</div>
+          <div class="nivel">7-</div>
+          <div class="nivel">6-</div>
+          <div class="nivel">5-</div>
+          <div class="nivel">4-</div>
+          <div class="nivel">3-</div>
+          <div class="nivel">2-</div>
+          <div class="nivel">1-</div>
+      </div>
+      <!-- barra 1 -->
+  <?php 
+  $valueABS = [
+      '1' => 18.6,
+      '2' => 20.5,
+      '3' => 23.1,
+      '4' => 23.5,
+      '5' => 24,
+      '6' => 24.3,
+      '7' => 24.5,
+      '8' => 24.5,
+      '9' => 24.6,
+      '10' => 24.8,
+    ];
+  ?>
+   <!-- mais barras... -->
+      @foreach($data['user']['score_card']['lastFiveEvaluations'] as $dado)
+      <?php $value = ($dado['user']['score_card']['calculus_type_app'] == "int") ? round(formatNumbers('report_mean',$dado['user']['score_card']['evaluation_points']['general_totals']['mean'])) : formatNumbers('report_mean',$dado['user']['score_card']['evaluation_points']['general_totals']['mean']);
+       
+      ?>
+      <div class="barra" style="height: {{$value *$valueABS[round($value)]}}px; width: 80px;">
+        <div class="valor">{{$value}}</div>
+      </div><footer class="info">{{$dado['evaluation']['name']}}</footer>
+      
+      @endforeach
+     
+    </div>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php $chart = $data['user']['score_card']['QuickChart'];
+  //dd($data['user']['score_card']['QuickChart']);
+  
+  $chart->setConfig('{
+  type: "bar",
+
+  data: {
+    labels: [
+      "1 valiação",
+      "2 valiação",
+      "3 valiação",
+      "4 valiação",
+      "5 valiação"
+    ],
+    datasets: [{
+      label: "Foo",
+      data: [1, 7 , 3 ,4, 9]
+    }]
+  },
+
+  options: {
+    legend: {
+      display: false,
+      position: "top",
+      align: "start",
+      labels: {
+        fontSize: 12,
+        fontStyle: "bold",
+        padding: 11
+      }
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            display: true,
+            fontSize: 12,
+            fontStyle: "bold",
+            min: 0,
+            max: 10,
+            stepSize: 1,
+          },
+        }
+      ]
+    },
+  }
+}');
+
+?>
+
+
+ <img style="width: 100%;" src="{{$chart->getUrl()}}">  
+</body>
+</html>

@@ -1,0 +1,19 @@
+
+.grafico {
+    display: flex;justify-content: center; align-items: flex-end;height: 210px;  width: 500px; border: 1px solid black;
+    }
+    
+    .eixo-y {display: grid;flex-direction: column;height: 100%;padding-right: 10px;
+    }
+    
+    .nivel {font-size: 12px;font-weight: bold;margin-top: 10%;
+    }
+    
+    .barra {background-color: #4472c4;margin: 0 10px;position: relative;
+    }
+    
+    .valor {position: absolute;top: -20px;left: 50%;transform: translateX(-50%);
+    }
+    
+    .info {position: absolute;writing-mode: vertical-rl;text-orientation: sideways;top: 105%;left: 50%;transform: translateX(-50%);font-size: 12px;text-transform: uppercase;
+    }

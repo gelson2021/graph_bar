@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 300px;
+        }
+
+        .bar {
+            width: 20px;
+            background-color: blue;
+            margin: 0 5px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="chart-container">
+        <div class="bar" style="height: 50%;">50</div>
+        <div class="bar" style="height: 30%;">30</div>
+        <div class="bar" style="height: 70%;">70</div>
+        <div class="bar" style="height: 40%;">40</div>
+        <div class="bar" style="height: 60%;">60</div>
+    </div>
+
+    <script>
+        // Aqui está um exemplo de como você pode obter os dados do usuário para definir a altura das barras
+let data = [20, 60, 100, 400, 80];
+let bars = document.querySelectorAll('.bar');
+
+for (let i = 0; i < bars.length; i++) {
+  bars[i].style.height = data[i] + '%';
+  bars[i].innerHTML = data[i] 
+}
+    </script>
+</body>
+
+</html>

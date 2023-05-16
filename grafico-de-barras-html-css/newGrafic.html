@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+.grafico {
+            position: relative;
+            top: 12%;
+            height: 520px;
+            width: 100%;
+            align-self: center;
+        }
+
+
+        .eixo-y {
+            position: relative;
+            display: inline-block;
+            height: 390px;
+        }
+
+
+
+        .nivel {
+            font-size: 12px;
+            font-weight: bold;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            
+        }
+
+
+
+        .barra {
+            display: inline-block;
+            top: 14%;
+            background-color: #4472c4;
+            margin: 0 10px;
+            position: relative;
+        }
+
+
+
+        .valor {
+            top: -20px;
+            position: absolute;
+            left: 40%;
+        }
+
+
+
+        .info {
+            position: absolute; 
+            display: inline-block;  
+            top: 50%;
+            transform:translate(-150px, 150%) rotate(-90deg);  
+            margin-left: 8%;
+        }
+    </style>
+</head>
+<body>
+    <div  style="display: {{($data['user']['score_card']['graph_report'] == 'yesShowChart') ? 'block' : 'none'}};">
+        <div style=" background: #00a2e8;width: 100%; font-weight: bold;">Gráfico comparativo da média dos avaliadores das 5 últimas avaliações realizadas</div>
+        @include('reports.report.report-parts.report-grafic', ['estatistica' => $data['user']['score_card']])
+    </div>
+
+    $data['user']['score_card']['dados']=
+    [ 
+        [  
+             "name" => "avaliação 1" ,
+            "valor" => 3
+        ]
+        ,
+        [
+            "name" =>"avaliação 2" ,
+            "valor" => 6
+        ]
+        ,
+        [
+            "name" =>"avaliação 3" ,
+            "valor" => 7
+        ]
+        ,
+        [
+            "name" => "eu quero testar 4" ,
+            "valor" => 10
+        ]
+        ,
+        [
+            "name" =>"avaliação 5" ,
+            "valor" => 9
+        ]
+    ];
+    <div class="grafico">
+        <div class="eixo-y">
+            <div class="nivel">10-</div>
+            <div class="nivel">9-</div>
+            <div class="nivel">8-</div>
+            <div class="nivel">7-</div>
+            <div class="nivel">6-</div>
+            <div class="nivel">5-</div>
+            <div class="nivel">4-</div>
+            <div class="nivel">3-</div>
+            <div class="nivel">2-</div>
+            <div class="nivel">1-</div>
+        </div>
+
+
+        
+        <!-- barra 1 -->
+        @foreach($data['user']['score_card']['dados'] as $dado)
+        <div class="barra" style="height: {{$dado['valor']*40}}px; width: 80px;">
+          <div class="valor">{{$dado[valor]}}</div>
+        </div><footer class="info">{{$dado[name]}}</footer>
+        @endforeach
+        <!-- mais ba´rras... -->
+      </div>
+     
+</body>
+</html>
